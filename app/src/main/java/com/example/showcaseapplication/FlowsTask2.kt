@@ -18,7 +18,8 @@ fun main() = runBlocking {
         //  Dodatkowo, wypisz tylko najnowsze wartości wyemitowane przez flow
         //  Poszukaj operatorów w dokumentacji: https://kotlinlang.org/docs/flow.html
         numberFlow
-            .collect { value ->
+            .take(10)
+            .collectLatest { value ->
                 println("Collected: $value")
                 delay(300)
             }
